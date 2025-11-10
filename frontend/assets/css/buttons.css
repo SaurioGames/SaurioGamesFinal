@@ -1,0 +1,180 @@
+.hud_button {
+  background: linear-gradient(
+    200deg,
+    #0a400c 0%,
+    #556b2f 40%,
+    #556b2f 60%,
+    #0a400c 100%
+  );
+  border: 0.5px solid #556b2f;
+  border-radius: 12px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.hud_button svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.hud_button img {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.wooden-button.small {
+  padding: 12px 28px;
+  font-size: 16px;
+}
+
+.wooden-button {
+  position: relative;
+  display: inline-block;
+  padding: 18px 52px;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #f4e6d3;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+
+  /* Base de madera */
+  background: linear-gradient(
+    135deg,
+    #8b6f30 0%,
+    #a67c38 25%,
+    #8b6f30 50%,
+    #735d28 75%,
+    #8b6f30 100%
+  );
+
+  /* Bordes y sombras para efecto 3D */
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Textura de madera con pseudo-elementos */
+.wooden-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      transparent 1px,
+      transparent 3px,
+      rgba(0, 0, 0, 0.1) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(139, 111, 48, 0.3) 0px,
+      rgba(166, 124, 56, 0.3) 2px,
+      rgba(139, 111, 48, 0.3) 4px
+    );
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Efecto de clavos metálicos en las esquinas */
+.wooden-button::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #c0a060, #8b6f30);
+  border-radius: 50%;
+  box-shadow:
+    calc(100% + 16px) 0 0 0 #c0a060,
+    0 calc(100% + 16px) 0 0 #c0a060,
+    calc(100% + 16px) calc(100% + 16px) 0 0 #c0a060;
+}
+
+/* Estado hover */
+.wooden-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.3);
+
+  background: linear-gradient(
+    135deg,
+    #9a7b35 0%,
+    #b5893d 25%,
+    #9a7b35 50%,
+    #7e652d 75%,
+    #9a7b35 100%
+  );
+}
+
+/* Botones para el diálogo de selección */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: none;
+  font-family: 'Cinzel', serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #556b2f 0%, #0a400c 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(85, 107, 47, 0.3);
+  border: 1px solid rgba(85, 107, 47, 0.5);
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(85, 107, 47, 0.4);
+  background: linear-gradient(135deg, #627a37 0%, #0d4c0f 100%);
+}
+
+.btn-primary:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(85, 107, 47, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(139, 111, 48, 0.2);
+  color: #f4e6d3;
+  border: 1px solid rgba(139, 111, 48, 0.3);
+}
+
+.btn-secondary:not(:disabled):hover {
+  background: rgba(139, 111, 48, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:not(:disabled):active {
+  background: rgba(139, 111, 48, 0.2);
+  transform: translateY(0);
+}

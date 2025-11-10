@@ -1,0 +1,87 @@
+main {
+  position: relative;
+  z-index: 1;
+  background-image: url("../img/rules_background.avif");
+  background-size: cover;
+  background-position: center;
+}
+
+.rules__container {
+  position: relative;
+  z-index: 2;
+  min-height: 100dvh;
+  height: auto;
+  max-width: min(90vw, 800px);
+
+  text-wrap: balance;
+  margin-top: 8vh;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #ffffff;
+}
+
+span {
+  font-weight: 600;
+}
+
+ol {
+  padding-left: 24px;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+p {
+  line-height: 1.2lh;
+}
+
+/* Responsive: móviles 320–576px */
+@media (min-width: 320px) and (max-width: 576px) {
+  .rules__container {
+    max-width: 100vw;
+    margin-top: 6vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6vh;
+    padding: 0 4vw;
+    height: auto;
+    min-height: auto;
+  }
+
+  h1 { font-size: 6.5vw; }
+  p { font-size: 4.2vw; line-height: 1.6; }
+
+  ol,
+  ul {
+    padding-left: 5vw;
+  }
+
+  li,
+  p,
+  span {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Responsive: tablets 577–992px */
+@media (min-width: 577px) and (max-width: 992px) {
+  .rules__container {
+    max-width: 92vw;
+    margin-top: 4vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6vh;
+    padding: 0 3vw;
+    height: auto;
+  }
+
+  h1 { font-size: 3.6vw; }
+  p { font-size: 2.1vw; line-height: 1.6; }
+
+  ol,
+  ul {
+    padding-left: 4vw;
+  }
+}
