@@ -1,10 +1,10 @@
 <?php
 
 // Definimos constantes para los datos de conexión a la base de datos
-const DB_HOST = 'ct_mysql'; // Dirección del servidor de base de datos (normalmente 'localhost')
-const DB_NAME = 'SaurioGamesBD'; // Nombre de la base de datos a la que queremos conectarnos
-const DB_USER = 'usuario'; // Usuario de la base de datos (por defecto en XAMPP suele ser 'root')
-const DB_PASS = 'clave123'; // contrasena del usuario de la base de datos (en XAMPP suele estar vacía)
+const DB_HOST = 'ct_mysql';
+const DB_NAME = 'SaurioGamesBD'; 
+const DB_USER = 'usuario';
+const DB_PASS = 'clave123'; 
 
 // Definimos una clase llamada Database para manejar la conexión a la base de datos
 class Database {

@@ -12,14 +12,14 @@ class Partida {
         $this->conn = $db;
     }
 
-    public function getAll() {
+    public function getAll() { // Obtener todas las partidas
         $query = "SELECT * FROM " . $this->table;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
 
-    public function getById($id) {
+    public function getById($id) { // Obtener partida por ID
         $query = "SELECT * FROM " . $this->table . " WHERE id_partida = :id LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
@@ -27,13 +27,13 @@ class Partida {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function create() {
+    public function create() { // Crear partida 
         $query = "INSERT INTO " . $this->table . " (fecha_inicio, cant_jugadores, estado, rondas_jugadas) VALUES (NOW(), ?, ?, 0)";
         $stmt = $this->conn->prepare($query);
         return $stmt->execute([$this->cant_jugadores, $this->estado]);
     }
 
-    public function update() {
+    public function update() { // Actualizar estado de partida
         $query = "UPDATE " . $this->table . " SET puntaje_partida = :puntaje_partida, cant_jugadores = :cant_jugadores, estado = :estado WHERE id_partida = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":puntaje_partida", $this->puntaje_partida);
@@ -43,7 +43,7 @@ class Partida {
         return $stmt->execute();
     }
 
-    public function delete() {
+    public function delete() { 
         $query = "DELETE FROM " . $this->table . " WHERE id_partida = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $this->id_partida);

@@ -12,14 +12,14 @@ class Usuario {
         $this->conn = $db;
     }
 
-    public function getAll() {
+    public function getAll() { // oBTENER TODOS LOS USUARIOS
         $query = "SELECT id_usuario, correo, nombre_usuario FROM " . $this->table;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
 
-    public function getById($id) {
+    public function getById($id) { // Obtener  USUARIO POR ID
         $query = "SELECT id_usuario, correo, nombre_usuario FROM " . $this->table . " WHERE id_usuario = :id LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);

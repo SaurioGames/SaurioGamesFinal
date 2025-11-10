@@ -18,9 +18,9 @@ function send_json($data, $status = 200)
 	echo json_encode($data);
 }
 
-require_once "Database.php";
-require_once "Usuario.php";
-require_once "Partida.php";
+require_once "Database.php"; // Llamar una unica vez el archivo Database.php
+require_once "Usuario.php"; // Llamar una unica vez el archivo Usuario.php
+require_once "Partida.php"; // Llamar una unica vez el archivo Partida.php
 
 $database = new Database();
 $db = $database->connect();
