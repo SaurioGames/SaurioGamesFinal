@@ -1,0 +1,234 @@
+dialog.window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 400px;
+
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  border-radius: 24px;
+
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+dialog[open] {
+  overflow: none;
+  display: flex;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+dialog#playWindow {
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+
+  padding: 28px 20px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  border: none;
+}
+
+dialog#playWindow form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "form button"
+    "select button";
+  gap: 20px;
+}
+
+dialog#playWindow form h3 {
+  grid-area: form;
+  color: #f2f2f2;
+  padding-bottom: 22px;
+}
+
+dialog#playWindow select#cantJugadores {
+  grid-area: select;
+  background: rgba(170, 170, 170, 0.1);
+  color: #ffffff;
+  border-radius: 16px;
+  font-size: 22px;
+  width: 100%;
+  padding: 20px 16px;
+}
+
+dialog#playWindow select#cantJugadores option {
+  font-size: 22px;
+  color: #000;
+}
+
+dialog#playWindow form button {
+  grid-area: button;
+}
+
+/* ======== ESTILO BASE ======== */
+dialog#loginWindow,
+dialog#signUpWindow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 28px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f2f2f2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ======== FORMULARIOS ======== */
+dialog#loginWindow form,
+dialog#signUpWindow form {
+   display: grid;
+  width: 100%;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+}
+
+dialog#loginWindow form h2,
+dialog#signUpWindow form h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.8px;
+}
+
+/* ======== INPUTS ======== */
+dialog#loginWindow input,
+dialog#signUpWindow input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  transition: border 0.2s, background 0.2s;
+}
+
+dialog#loginWindow input:focus,
+dialog#signUpWindow input:focus {
+  border: 2px solid #fff;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* ======== BOTONES ======== */
+dialog#loginWindow form button,
+dialog#signUpWindow form button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.3s;
+}
+
+dialog#loginWindow form button:hover,
+dialog#signUpWindow form button:hover {
+  transform: scale(1.03);
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 576px) {
+  dialog#loginWindow,
+  dialog#signUpWindow {
+    width: 90vw;
+    max-width: 90vw;
+    padding: 24px 20px;
+  }
+
+  dialog#loginWindow form h2,
+  dialog#signUpWindow form h2 {
+    font-size: 20px;
+  }
+
+  dialog#loginWindow input,
+  dialog#signUpWindow input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  dialog#loginWindow form button,
+  dialog#signUpWindow form button {
+    font-size: 15px;
+  }
+}
+
+/* ======== EFECTO DE APERTURA ======== */
+dialog[open] {
+  animation: fadeInDialog 0.25s ease-out;
+}
+
+@keyframes fadeInDialog {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+input::placeholder {
+  text-transform: uppercase;
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+  dialog#playWindow {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  dialog#playWindow[open] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  dialog#playWindow form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "form"
+      "select"
+      "button";
+    gap: 16px;
+  }
+
+  dialog#playWindow select#cantJugadores {
+    font-size: 18px;
+    padding: 14px 12px;
+  }
+}

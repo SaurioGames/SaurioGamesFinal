@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurando partida! - SAURIOGAMES</title>
+
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/players.css" />
+  </head>
+  <body>
+    <div class="container lobby_banner">
+      <div class="overlay"></div>
+      
+      <main class="players_main">
+        <div class="players_container">
+          <h2>Configurando partida</h2>
+          
+          <div class="admin_section">
+            <div class="admin_card">
+              <div class="admin_label">Anfitrión de la sala</div>
+              <div class="admin_name" id="adminName">--</div>
+            </div>
+          </div>
+
+          <form id="playersForm" class="players_form">
+            <div id="playersGrid" class="players_grid">
+              <!-- Los campos de jugadores se generarán dinámicamente aquí -->
+            </div>
+
+            <p>Los jugadores que no existan serán creados automáticamente</p>
+
+            <div class="form_actions">
+              <button type="button" id="backBtn" class="wooden-button small">
+                Volver
+              </button>
+              <button type="submit" class="wooden-button">
+                Iniciar Partida
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="../assets/js/game/assignPlayers.js"></script>
+  </body>
+</html>

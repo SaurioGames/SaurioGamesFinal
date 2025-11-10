@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partida - SAURIOGAMES</title>
+
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/game.css" />
+  </head>
+  <body>
+    <div class="game_container">
+      <!-- HUD Superior -->
+      <div class="game-hud">
+        <div class="hud-left">
+          <div class="game-stats">
+            <div class="stat-item">
+              <span>Ronda: <strong id="currentRound">1</strong>/2</span>
+            </div>
+            <div class="stat-item">
+              Turno: <strong id="currentTurn">1</strong>/<strong id="totalPlayers">0</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hud-center">
+          <div id="currentPlayerInfo" class="current-player">
+            <span class="player-turn"
+              >Turno de: <br /><strong id="currentPlayerName">-</strong></span
+            >
+          </div>
+        </div>
+        <div class="hud-right">
+          <button id="showScoresBtn" class="hud-btn">Puntuaciones</button>
+          <button id="exitGame" class="exit_button">Salir</button>
+        </div>
+      </div>
+
+      <main class="game-main">
+          <div class="board-wrapper">
+        <!-- Tablero de Juego -->
+        <div class="game-board">
+          <div class="board-grid">
+            <!-- Recintos Superiores -->
+            <div class="board-row">
+              <div class="recinto" id="bosqueSemejanza">
+                <div class="recinto-header">
+                  <h3>🌳 Bosque de la Semejanza</h3>
+                  <div class="recinto-info">
+                    <span class="reglaIcon">=</span>
+                    <span class="puntos">2-4-8-12-18-24 pts</span>
+                  </div>
+                </div>
+                <div class="dinos-area" data-recinto="bosqueSemejanza"></div>
+              </div>
+              <div class="recinto" id="pradoDiferencia">
+                <div class="recinto-header">
+                  <h3>🌾 Prado de la Diferencia</h3>
+                  <div class="recinto-info">
+                    <span class="reglaIcon">≠</span>
+                    <span class="puntos">1-3-6-10-15-21 pts</span>
+                  </div>
+                </div>
+                <div class="dinos-area" data-recinto="pradoDiferencia"></div>
+              </div>
+              <div class="recinto" id="praderaAmor">
+                <div class="recinto-header">
+                  <h3>💕 Pradera del Amor</h3>
+                  <div class="recinto-info">
+                    <span class="regla">5pts x pareja</span>
+                  </div>
+                </div>
+                <div class="dinos-area" data-recinto="praderaAmor"></div>
+              </div>
+            </div>
+
+            <!-- Río Central -->
+            <div class="rio-container">
+              <div class="recinto" id="rio">
+                <div class="recinto-header">
+                  <h3>🌊 Río</h3>
+                  <span class="regla">1pt x dino</span>
+                </div>
+                <div class="dinos-area" data-recinto="rio"></div>
+              </div>
+            </div>
+
+            <!-- Recintos Inferiores -->
+            <div class="board-row">
+              <div class="recinto" id="trioFrondoso">
+                <div class="recinto-header">
+                  <h3>🦕 Trío Frondoso</h3>
+                </div>
+                <div class="dinos-area" data-recinto="trioFrondoso"></div>
+                <div class="recinto-info">
+                  <span class="regla">7pts si hay 3</span>
+                </div>
+              </div>
+              <div class="recinto" id="reySelva">
+                <div class="recinto-header">
+                  <h3>👑 Rey de la Selva</h3>
+                </div>
+                <div class="dinos-area" data-recinto="reySelva"></div>
+                <div class="recinto-info">
+                  <span class="regla">7pts si tienes mayoría</span>
+                </div>
+              </div>
+              <div class="recinto" id="islaSolitario">
+                <div class="recinto-header">
+                  <h3>🏝️ Isla Solitaria</h3>
+                </div>
+                <div class="dinos-area" data-recinto="islaSolitario"></div>
+                <div class="recinto-info">
+                  <span class="regla">7pts si es único</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- Mano del Jugador y Controles -->
+        <div class="player-controls">
+          <div class="player-hand">
+            <h3>Tu Mano</h3>
+            <div class="dinos-area" id="playerHand"></div>
+          </div>
+          <div class="turn-controls">
+            <button id="startRoundBtn" class="control-btn">
+              Iniciar nueva ronda
+            </button>
+            <button id="endTurnBtn" class="control-btn">
+              Terminar Turno
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra lateral con jugadores -->
+        <aside id="playerSidebar" class="player-sidebar">
+          <div class="sidebar-header">
+            <h3>Jugadores</h3>
+          </div>
+          <ul id="playerList" class="player-list"></ul>
+        </aside>
+
+        <!-- Modal de puntuaciones -->
+        <dialog id="scoresModal" class="modal">
+          <div class="modal-header">
+            <h2>Puntuaciones</h2>
+          </div>
+          <div id="scoresContent"></div>
+          <button class="modal-close">Cerrar</button>
+        </dialog>
+      
+      </main>
+    </div>
+
+    <script src="../assets/js/game/parkRules.js?v=20241107" type="module"></script>
+    <script src="../assets/js/game/game.js?v=20241107" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+<div id="overlay" class="dark-overlay"></div>
+
+<div id="dinoSidebar" class="sidebar">
+
+    <div class="sidebar_header">
+        <div class="header-top">
+            <h2>Seleccionar Dinosaurios</h2>
+        </div>
+        <hr />
+
+        <div class="player-info">
+            <span>Jugador: <strong id="nombreJugador"></strong></span>
+            <span>Seleccionados: <strong id="dinoCount">0</strong>/6</span>
+        </div>
+    </div>
+
+    <div class="sidebar_content" id="sidebarDinos">
+        <!-- dinobtn cards generadas dinámicamente -->
+    </div>
+<button id="confirmDinoSelection" class="confirm-btn">
+    Confirmar Selección
+</button>
+
+</div>
+
+<style>
+    /* Variables CSS para consistencia */
+:root {
+    --color-background: #212121;
+    --color-surface: #2a2a2a;
+    --color-primary: #4CAF50;
+    --color-error: #f44336;
+    --color-success: #4CAF50;
+    --color-text: #ffffff;
+    --spacing-unit: 8px;
+    --border-radius: 8px;
+    --transition-quick: 0.2s ease;
+}
+
+.dinobtn {
+  width: 48px;
+  height: 48px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dinobtn.verde { 
+  background: linear-gradient(135deg, #48bb78, #2f855a);
+  border: 2px solid #38a169;
+}
+.dinobtn.verde::after {
+  content: '🦕';
+  font-size: 40px;
+}
+
+/* T-Rex (Rojo) */
+.dinobtn.rojo { 
+  background: linear-gradient(135deg, #f56565, #c53030);
+  border: 2px solid #e53e3e;
+}
+.dinobtn.rojo::after {
+  content: '🦖';
+  font-size: 40px;
+}
+
+/* Velociraptor (Amarillo) */
+.dinobtn.amarillo { 
+  background: linear-gradient(135deg, #ecc94b, #b7791f);
+  border: 2px solid #d69e2e;
+}
+.dinobtn.amarillo::after {
+  content: '🦖';
+  font-size: 40px;
+  transform: scaleX(-1);
+}
+
+/* Pterodáctilo (Violeta) */
+.dinobtn.violeta { 
+  background: linear-gradient(135deg, #9f7aea, #6b46c1);
+  border: 2px solid #805ad5;
+}
+.dinobtn.violeta::after {
+  content: '🦕';
+  font-size: 40px;
+  transform: rotate(-15deg);
+}
+
+/* Estegosaurio (Naranja) */
+.dinobtn.naranja { 
+  background: linear-gradient(135deg, #ed8936, #c05621);
+  border: 2px solid #dd6b20;
+}
+.dinobtn.naranja::after {
+  content: '🦕';
+  font-size: 40px;
+  transform: scaleX(-1);
+}
+
+/* Triceratops (Azul) */
+.dinobtn.azul { 
+  background: linear-gradient(135deg, #4299e1, #2b6cb0);
+  border: 2px solid #3182ce;
+}
+.dinobtn.azul::after {
+  content: '🦕';
+  font-size: 40px;
+  transform: rotate(15deg);
+}
+/* Layout Principal */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 420px;
+    max-width: 90%;
+    height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-text);
+    padding: calc(var(--spacing-unit) * 2);
+    z-index: 999;
+    
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-unit);
+    
+    transform: translateX(-100%);
+    transition: transform var(--transition-quick);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.6);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.dark-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(1px);
+    z-index: 998;
+    display: none;
+}
+.dark-overlay.show {
+    display: block;
+}
+
+/* Header y Controles */
+.sidebar_header {
+    padding-bottom: var(--spacing-unit);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-unit);
+}
+
+.sidebar_header h2 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin: 0;
+}
+
+
+.sidebar_header hr {
+    border: none;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: var(--spacing-unit) 0;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Grid de Dinosaurios */
+.sidebar_content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-unit);
+    padding: var(--spacing-unit) 0;
+    margin-bottom: auto;
+    overflow-y: auto;
+    align-items: start;
+    justify-items: center;
+}
+/* Tarjetas de Dinosaurios */
+.dinobtn-card {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-quick), box-shadow var(--transition-quick);
+    border-radius: var(--border-radius);
+}
+
+.dinobtn-card:hover {
+    transform: translateY(-2px);
+}
+
+.dinobtn-card.selected {
+    outline: 2px solid var(--color-primary);
+    box-shadow: 0 0 8px rgba(76,175,80,0.8);
+}
+
+.dinobtn-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    transition: background-color var(--transition-quick);
+}
+
+.counter-wrapper {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    width: 100%;
+    padding: 2px;
+}
+
+.counter-controls button {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--transition-quick);
+    padding: 0;
+    line-height: 1;
+}
+
+.counter-controls button.minus {
+    background: var(--color-error);
+}
+
+.counter-controls button.plus {
+    background: var(--color-success);
+}
+
+.counter-controls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.counter-controls .count {
+    color: white;
+    font-size: 12px;
+    min-width: 16px;
+    text-align: center;
+}
+
+/* Colores de Dinosaurios */
+.dinobtn-wrapper.verde { background: #4CAF50; }
+.dinobtn-wrapper.rojo { background: #f44336; }
+.dinobtn-wrapper.amarillo { background: #FFC107; }
+.dinobtn-wrapper.violeta { background: #9C27B0; }
+.dinobtn-wrapper.naranja { background: #FF9800; }
+.dinobtn-wrapper.azul { background: #2196F3; }
+
+/* Efectos hover en los colores */
+.dinobtn-wrapper.verde:hover { background: #45a049; }
+.dinobtn-wrapper.rojo:hover { background: #e53935; }
+.dinobtn-wrapper.amarillo:hover { background: #FFB300; }
+.dinobtn-wrapper.violeta:hover { background: #8E24AA; }
+.dinobtn-wrapper.naranja:hover { background: #FB8C00; }
+.dinobtn-wrapper.azul:hover { background: #1E88E5; }
+
+/* Ajustes adicionales */
+.sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.confirm-btn {
+    position: sticky;
+    background: var(--color-success);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: auto;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+}
+</style>
