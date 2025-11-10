@@ -1,6 +1,7 @@
 // Función para eliminar la partida y sus relaciones
 async function deleteGame(gameId) {
   try {
+    // Fetch para eliminar partida
     const response = await fetch(`http://localhost/sauriogames/api/index.php?entity=partidas&action=eliminar&id=${gameId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

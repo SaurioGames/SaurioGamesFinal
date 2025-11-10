@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {  
   // Verificamos si ya hay una partida activa
   const partidaActiva = JSON.parse(localStorage.getItem("partidaActual"));
   if (partidaActiva) {
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Crear objeto partida
       const partida = {
         id: Date.now(),
         jugadores: cantJugadores,
