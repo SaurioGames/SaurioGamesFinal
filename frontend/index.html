@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAURIOGAMES</title>
+
+    <link rel="stylesheet" href="./assets/css/global.css" />
+  </head>
+  <body>
+    <div class="container lobby_banner">
+      <div class="overlay"></div>
+      <header class="hud_lobby">
+        <div class="profile_bar">
+          <div class="profile_avatar">
+            <img
+              src="./assets/img/avatar.webp"
+              alt="Foto de perfil del usuario"
+            />
+          </div>
+          <div class="profile_info">
+            <h2 class="profile_name">--</h2>
+            <h3>Conectado</h3>
+          </div>
+
+          <div class="profile_stats">
+            <ul>
+              <li class="stats">
+                <img
+                  src="./assets/img/icons/victoryIcon.webp"
+                  alt="Partidas ganadas"
+                />
+                <h4>11</h4>
+              </li>
+              <li class="stats">
+                <img
+                  src="./assets/img/icons/gamesIcon.webp"
+                  alt="Partidas jugadas"
+                />
+                <h4>16</h4>
+              </li>
+              <li class="stats">
+                <img
+                  src="./assets/img/icons/coinIcon.webp"
+                  alt="Puntos obtenidos"
+                />
+                <h4>46</h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="profile_nav">
+          <nav>
+            <ul>
+              <li>
+               <a href="./pages/rules.html">
+                 <button class="hud_button">
+                  <img
+                    src="./assets/img/icons/rulesIcon.webp"
+                    alt="Leer reglas"
+                  />
+                </button>
+               </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="lobby_header">
+          <div class="header">
+            <img
+              src="./assets/img/logo.webp"
+              alt="Logo de Draftosaurus"
+              width="400"
+              id="header_logo"
+              height=""
+            />
+            <div class="player">
+              <img
+                src="./assets/img/avatar.webp"
+                alt="Foto de perfil del usuario"
+              />
+
+              <div>
+                <h3 class="profile_name">--</h3>
+                <p>Listo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="lobby_content">
+          <div class="cta">
+            <button onclick="toggleWindow('signUpWindow')" class="wooden-button">Crear cuenta</button>
+            <button id="playBtn" class="wooden-button">Jugar</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Ventanas flotantes (js/windows) -->
+    <dialog id="playWindow">
+      <form method="dialog" id="gameForm">
+        <h3>Selecciona la cantidad de jugadores</h3>
+        <select name="cantJugadores" required id="cantJugadores">
+          <option value="2">2 Jugadores</option>
+          <option value="3">3 Jugadores</option>
+          <option value="4">4 Jugadores</option>
+          <option value="5">5 Jugadores</option>
+        </select>
+
+        <button type="submit" id="createGame" class="wooden-button">
+          Crear partida
+        </button>
+      </form>
+    </dialog>
+
+    <dialog id="loginWindow">
+      <form method="post" id="loginForm">
+        <h2>Iniciar sesión</h2>
+        <input placeholder="Nombre de usuario" type="text" id="login_username" name="username" required />
+        <input placeholder="contrasena" type="password" id="login_password" name="password" required />
+
+        <button class="wooden-button small" type="submit">Ingresar</button>
+      </form>
+    </dialog>
+
+    <dialog id="signUpWindow">
+      <form method="post" id="signUpForm">
+        <h2>Crear cuenta</h2>
+        <input placeholder="Correo electrónico" type="email" id="signup_correo" name="correo" required />
+        <input placeholder="Nombre de usuario" type="text" id="signup_username" name="username" required />
+        <input placeholder="contrasena" type="password" id="signup_password" name="password" required />
+
+        <button class="wooden-button small" type="submit">Crear cuenta</button>
+      </form>
+    </dialog>
+
+    <script src="./assets/js/windows/toggleWindow.js"></script>
+    <script src="./assets/js/auth.js"></script>
+    <script src="./assets/js/game/createGame.js"></script>
+  </body>
+</html>
